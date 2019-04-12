@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>輪番播放</title>
+    </head>
+    <body>
+		<center>
+        <div >
+            <img src="" alt="" id="big"/>
+        </div>
+        <div id="small"></div>
+		
+        <script type="text/javascript">
+            //图片对象构造方法
+            function HZCImageModel(smallImage,bigImage,title=''){
+                this.smallImage=smallImage
+                this.bigImage=bigImage
+                this.title = title
+            }
+            
+            imageArray = [
+                new HZCImageModel('thumb-1.jpg','picture-1.jpg','图片1'),
+                new HZCImageModel('thumb-2.jpg','picture-2.jpg','图片2'),
+                new HZCImageModel('thumb-3.jpg','picture-3.jpg','图片3'),
+            ]
+            //大图节点
+            bigImgNode = document.getElementById('big')
+            bigImgNode.src = 'images/'+imageArray[0].bigImage
+            
+            //小图盒子
+            smallBoxNode = document.getElementById('small')
+            //创建小图标
+            for(i=0; i<imageArray.length;i++){
+                //拿到图片模型
+                ImageModel = imageArray[i]
+                //创建对应的小图节点
+                imageNode = document.createElement('images')
+                //设置图片
+                imageNode.src = 'images/'+ImageModel.smallImage
+                //*****通过节点来保存图片模型
+                imageNode.ImageMode = ImageModel
+                //添加节点
+                smallBoxNode.appendChild(imageNode)
+                //添加事件
+                imageNode.addEventListener('mouseover',function(){
+                    //使用鼠标点击的小图节点保存的信息
+                    bigImgNode.src = 'images/'+this.ImageMode.bigImage
+                    bigImgNode.title = this.ImageMode.title
+                })
+                
+            }
+            
+            
+            
+        </script>
+		</center>
+    </body>
+</html>
