@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>鼠标焦点图层抖动特效</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			#box li {
+				position: relative;
+				display: inline-block;
+				*display: inline;
+				zoom: 1;
+				margin: 10px;
+				width: 100px;
+				height: 100px;
+				background: #23D160;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var obj = document.getElementById("box"),
+					oLi = obj.getElementsByTagName("li"),
+					len = oLi.length,
+					timer = null,
+					iNow = 3;
+				for (var i = len; i--;) {
+					oLi[i].onmouseover = function() {
+						shade(this);
+					}
+					oLi[i].onmouseout = function() {
+						clearInterval(timer);
+						this.style.left = 0;
+						this.style.top = 0;
+					}
+					
+				};
+				function shade(el) {
+					clearInterval(timer);
+					timer = setInterval(function() {
+						el.style.left = iNow + "px";
+						el.style.top = iNow + "px";
+						iNow = -iNow;
+					}, 50);
+				}
+
+			}			
+// 				function randomColor(opacity=1) {
+// 					let r = parseInt(Math.random() * 256)
+// 					let g = parseInt(Math.random() * 256)
+// 					let b = parseInt(Math.random() * 256)
+// 					return `rgba(${r}, ${g}, ${b}, ${opacity})`
+// 				}
+		</script>
+	</head>
+
+	<body>
+		<ul id="box">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>
